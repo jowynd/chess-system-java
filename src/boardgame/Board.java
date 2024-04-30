@@ -7,7 +7,7 @@ public class Board {
 
     public Board(int rows, int columns) {
         if (rows < 1 || columns < 1) {
-            throw new ChessException("\nError creating board: there must be at least 1 row and 1 column " +
+            throw new BoardException("\nError creating board: there must be at least 1 row and 1 column " +
                     "\nErro criando tabuleiro: é necessário que haja pelo menos 1 linha e 1 coluna");
         }
         this.rows = rows;
@@ -17,7 +17,7 @@ public class Board {
 
     public Piece piece(int row, int column) {
         if (!positionExists(row, column)){
-            throw new ChessException ("\nPosition not on the board" +
+            throw new BoardException("\nPosition not on the board" +
                     "\nPosição não está no tabuleiro");
         }
         return pieces[row][column];
@@ -25,7 +25,7 @@ public class Board {
 
     public Piece piece(Position position) {
         if (!positionExists(position)){
-            throw new ChessException ("\nPosition not on the board" +
+            throw new BoardException("\nPosition not on the board" +
                     "\nPosição não está no tabuleiro");
         }
         return pieces[position.getRow()][position.getColumn()];
@@ -33,7 +33,7 @@ public class Board {
 
     public void placePiece(Piece piece, Position position) {
         if (thereIsAPiece(position)) {
-            throw new ChessException("\nThere is already a piece in this position: " + position +
+            throw new BoardException("\nThere is already a piece in this position: " + position +
                     "\nJá existe uma peça nesta posiçao: " + position);
         }
         pieces[position.getRow()][position.getColumn()] = piece;
@@ -50,7 +50,7 @@ public class Board {
 
     public boolean thereIsAPiece(Position position) {
         if (!positionExists(position)){
-            throw new ChessException ("\nPosition not on the board" +
+            throw new BoardException("\nPosition not on the board" +
                     "\nPosição não está no tabuleiro");
         }
         return piece(position) != null;
