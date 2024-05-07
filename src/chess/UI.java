@@ -29,6 +29,15 @@ public class UI {
         return new ChessPosition(column, row);
     }
 
+    public static void printMatch (ChessMatch chessMatch) {
+        printBoard(chessMatch.getPieces());
+        System.out.println("Turn: " + chessMatch.getTurn());
+        System.out.println();
+        System.out.println("Waiting for player " + chessMatch.getCurrentPlayer());
+
+
+    }
+
     public static void printBoard(ChessPiece[][] pieces) {
         for (int i = 0; i < pieces.length; i++) {
             System.out.print((8 - i) + " ");
